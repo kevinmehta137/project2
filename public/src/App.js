@@ -3,31 +3,25 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from "./pages/home";
-import Calendar from "./pages/Calendar";
+import Calendar from "./pages/Calendar/components/Calendar";
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/home">Home</Link>
-            </li>
-            <li>
-              <Link to="/calendar">Calendar</Link>
-            </li>
-          </ul>
-
-          <hr />
-
-          <Route exact path="/" component={Home} />
-          <Route path="/home" component={Home} />
-          <Route path="/calendar" component={Calendar} />
-        </div>
+        <div className="App">
+        <header>
+          <div id="logo">
+            <span className="icon">date_range</span>
+            <span>
+              react<b>calendar</b>
+            </span>
+          </div>
+        </header>
+        <main>
+          <Calendar />
+        </main>
+      </div>
       </Router>
     );
   }
