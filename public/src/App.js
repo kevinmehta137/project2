@@ -10,9 +10,11 @@ class App extends Component {
     return (
       <div className="App">
        <Navbar />
+
        <Calendar />
 {/*  <CalendarCard /> */}
 {/*<Forms />*/}
+
       </div>
     );
   }
