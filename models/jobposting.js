@@ -11,12 +11,12 @@ module.exports = (sequelize, type) => {
         },
         gig_description: {
 
-            type: type.INTEGER,
+            type: type.TEXT,
             allownull: false
         },
         gig_location: {
 
-            type: type.INTEGER,
+            type: type.TEXT,
             allownull: false
         },
         gig_number_of_hours: {
