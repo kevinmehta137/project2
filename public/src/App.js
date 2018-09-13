@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import Calendar from './Components/Calendar/Calendar';
-//import CalendarCard from './Components/CalendarCard/CalendarCard';
+import CalendarCard from './Components/CalendarCard/CalendarCard';
 //import Forms from './Components/Forms/Forms';
 
 class App extends Component {
@@ -11,8 +11,8 @@ class App extends Component {
       <div className="App">
        <Navbar />
 
-       <Calendar />
-{/*  <CalendarCard /> */}
+      {/* <Calendar /> */}
+      {/* <CalendarCard /> */}
 {/*<Forms />*/}
 
       </div>

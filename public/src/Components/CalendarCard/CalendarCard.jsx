@@ -11,6 +11,7 @@ import List from '@material-ui/core/List';
 const styles = {
     card: {
       minWidth: 275,
+      maxWidth: 400,
     },
     bullet: {
       display: 'inline-block',
@@ -30,20 +31,19 @@ function CalendarCard(props) {
     const { classes } = props;
     const bull = <span className={classes.bullet}>•</span>;
 
-
-return (
-    <Card className={classes.card}>
-      <CardContent>
-        <List>Job Title</List>
-        <List>Employer</List>
-        <List>Salary</List>
-        <List>Start Date</List>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
-  );
+  return (
+      <Card className={classes.card}>
+        <CardContent>
+          <List style={{fontWeight: 'bold', fontSize: 24}}>Job Title</List>
+          <List>Employer</List>
+          <List style={{fontSize: 14}}>Salary</List>
+          <List style={{fontSize: 12}}>Start Date</List>
+        </CardContent>
+        <CardActions>
+          <Button size="small">Edit Posting</Button>
+        </CardActions>
+      </Card>
+    );
 }
 
 CalendarCard.propTypes = {
