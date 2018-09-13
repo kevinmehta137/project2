@@ -58,7 +58,7 @@ class Navbar extends React.Component {
             <MenuIcon />
           </IconButton>
           <Typography variant="title" color="inherit" className={classes.grow}>
-            The Gif Finder
+            The Gig Finder
           </Typography>
           <Button onClick={this.handleDrawerOpen} color="inherit"> Logout </Button>
         </Toolbar>
