@@ -11,6 +11,7 @@ import ExitToApp from '@material-ui/icons/ExitToApp';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
+import PostJob from '../PostJob/PostJob';
 
 
 const styles = {
@@ -60,7 +61,7 @@ class Navbar extends React.Component {
           <Typography variant="title" color="inherit" className={classes.grow}>
             The Gig Finder
           </Typography>
-          <Button onClick={this.handleDrawerOpen} color="inherit"> Logout </Button>
+          <Button /*onClick={this.handleDrawerOpen}*/ color="inherit"> Logout </Button>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -77,8 +78,8 @@ class Navbar extends React.Component {
           </div>
           <Divider />
           <div className={classes.drawerInner}>
-            <List> Post A Job! </List>
-            <List> Manage Job Posts! </List>
+            <List> <PostJob />  </List>
+            <List><Button color="inherit"> Manage Job Posts! </Button></List>
           </div>
         </Drawer>
     </div>
