@@ -1,28 +1,28 @@
 module.exports = function(sequelize, DataTypes) {
-  var Example = sequelize.define("employer_signup", {
+  var employer = sequelize.define("employer_signup", {
       employer_id: {
-        type: type.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
       },
       employer_name: {
-         type: type.STRING,
+         type: DataTypes.TEXT,
          allownull: false
       },
       employer_email:{
-        type: type.INTEGER,
+        type: DataTypes.TEXT,
         allownull: false
       },
       employer_password:{
-        type: type.INTEGER,
+        type: DataTypes.TEXT,
         allownull: false
       },
       employer_confirmpassword:{
-        type: type.INTEGER,
+        type: DataTypes.TEXT,
         allownull: false
       },
 
  
   });
-  return Example;
+  return employer;
 };
