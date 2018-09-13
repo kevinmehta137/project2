@@ -1,28 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Home from "./pages/home";
-import Calendar from "./pages/Calendar/components/Calendar";
+import Navbar from './Components/Navbar/Navbar';
+import Calendar from './Components/Calendar/Calendar';
+//import CalendarCard from './Components/CalendarCard/CalendarCard';
+//import Forms from './Components/Forms/Forms';
 
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div className="App">
-        <header>
-          <div id="logo">
-            <span className="icon">date_range</span>
-            <span>
-              react<b>calendar</b>
-            </span>
-          </div>
-        </header>
-        <main>
-          <Calendar />
-        </main>
+      <div className="App">
+       <Navbar />
+
+       <Calendar />
+{/*  <CalendarCard /> */}
+{/*<Forms />*/}
+
       </div>
-      </Router>
     );
   }
 }
