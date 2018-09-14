@@ -39,10 +39,30 @@ class PostJob extends React.Component {
               Please provide information on the new job posting:
             </DialogContentText>
             <TextField
-              autoFocus
               margin="dense"
               id="name"
               label="Job Title"
+              type="title"
+              fullWidth
+            />
+            <TextField
+              margin="dense"
+              id="location"
+              label="Job Location"
+              type="title"
+              fullWidth
+            />
+            <TextField
+              margin="dense"
+              id="poolSize"
+              label="# of People"
+              type="title"
+              fullWidth
+            />
+            <TextField
+              margin="dense"
+              id="workType"
+              label="Type of Work"
               type="title"
               fullWidth
             />
