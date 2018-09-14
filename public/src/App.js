@@ -9,12 +9,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       <Navbar />
-
-      {/* <Calendar /> */}
-      {/* <CalendarCard /> */}
-{/*<Forms />*/}
-
+        <Navbar />
+        {/* <Calendar /> */}
+        {/* <CalendarCard /> */}
+        {/*<Forms />*/}
       </div>
     );
   }
