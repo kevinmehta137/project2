@@ -12,7 +12,7 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import PostJob from '../PostJob/PostJob';
-
+import ManageJob from '../ManageJob/ManageJob';
 
 const styles = {
   root: {
@@ -79,7 +79,9 @@ class Navbar extends React.Component {
           <Divider />
           <div className={classes.drawerInner}>
             <List> <PostJob />  </List>
-            <List><Button color="inherit"> Manage Job Posts! </Button></List>
+            {/* <List><Button color="inherit"> Post a Job </Button></List> */}
+            <List> <ManageJob />  </List>
+            {/* <List><Button color="inherit"> Manage Job Posts </Button></List> */}
           </div>
         </Drawer>
     </div>
