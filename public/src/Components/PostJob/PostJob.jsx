@@ -27,7 +27,7 @@ class PostJob extends React.Component {
 
     return (
         <div>
-        <Button onClick={this.handleClickOpen}> Post A Job! </Button>
+        <Button onClick={this.handleClickOpen}> Post A Job </Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
