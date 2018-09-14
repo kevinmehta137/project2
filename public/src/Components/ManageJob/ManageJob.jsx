@@ -13,6 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
+import DeletePosting from '../DeletePosting/DeletePosting';
 
 const styles = {
   appBar: {
@@ -85,7 +86,9 @@ class ManageJob extends React.Component {
             <ListItem button>
               <ListItemText primary="Job 4" secondary="Date Range" />
               <Button>Edit</Button>
-              <Button>Close</Button>
+              <Button>Close
+                  <DeletePosting />
+              </Button>
             </ListItem>
           </List>
         </Dialog>
