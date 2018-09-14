@@ -13,6 +13,8 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import PostJob from '../PostJob/PostJob';
 import ManageJob from '../ManageJob/ManageJob';
+import CardMedia from '@material-ui/core/CardMedia';
+
 
 const styles = {
   root: {
@@ -60,7 +62,7 @@ class Navbar extends React.Component {
           </IconButton>
           <Typography variant="title" color="inherit" className={classes.grow}>
             The Gig Finder
-          </Typography>
+            </Typography>
           <Button /*onClick={this.handleDrawerOpen}*/ color="inherit"> Logout </Button>
         </Toolbar>
       </AppBar>
