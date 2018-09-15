@@ -124,7 +124,7 @@ class PostJob extends React.Component {
             }}
             />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
             <InputLabel htmlFor="rate-native-simple">Rate of Pay  </InputLabel>
             <Select
               margin="dense"
@@ -141,7 +141,7 @@ class PostJob extends React.Component {
             <option value={'hourly'}>Hourly</option>
           </Select>            
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
             <TextField
               required
               margin="dense"
