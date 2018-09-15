@@ -17,6 +17,17 @@ const styles = {
 };
 
 class MainPage extends React.Component {
+    state = {
+        open: true,
+    };
+
+    handleClickOpenCalendar = () => {
+    this.setState({ open: true });
+    };
+    
+    handleClose = () => {
+    this.setState({ open: false });
+    };
 
     render() {
         return (
