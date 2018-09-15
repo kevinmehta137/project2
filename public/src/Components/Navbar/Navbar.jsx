@@ -67,7 +67,7 @@ class Navbar extends React.Component {
             alignItems="center"
             justify="center">
         <Grid item xs={12}>
-          <img src={Gig_Finder_Logo} alt='Gig_Finder_Logo' height="120" />
+          <img src={Gig_Finder_Logo} alt='Gig_Finder_Logo' height="80" />
         </Grid>
         </Grid>
         <Grid item xs={6} justify='right'>
