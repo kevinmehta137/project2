@@ -1,40 +1,44 @@
 module.exports = function(sequelize, DataTypes) {
-    var postjob = sequelize.define("add_gigs", {
-        employer_id: {
+    var add_gigs = sequelize.define("add_gigs", {
+        id: {
           type: DataTypes.INTEGER,
           primaryKey: true,
           autoIncrement: true
         },
-        gigs_date: {
+        gig_date: {
            type: DataTypes.DATE,
+           defaultValue: DataTypes.NOW,
            allownull: false
         },
-        gigs_description:{
+        gig_description:{
           type: DataTypes.TEXT,
           allownull: false
         },
-        gigs_location:{
+        gig_location:{
           type: DataTypes.TEXT,
           allownull: false
         },
-        gigs_hours:{
+        gig_number_of_hours:{
           type: DataTypes.TEXT,
           allownull: false
         },
-        gigs_people_needed:{
+        gig_number_of_people:{
             type: DataTypes.TEXT,
             allownull: false
           },
-        gigs_rate:{
+        gig_rate:{
             type: DataTypes.TEXT,
             allownull: false
         },
-        gigs_total_pay:{
+        gig_total_pay:{
             type: DataTypes.TEXT,
             allownull: false
           },
   
    
-    });
-    return postjob;
+    },{
+      timestamps:false
+    }
+  );
+    return add_gigs;
   };
