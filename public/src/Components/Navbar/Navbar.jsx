@@ -57,18 +57,23 @@ class Navbar extends React.Component {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-        <Grid container spacing={24}>
-        <Grid item xs={4}>
+        <Grid item xs={6}>
           <IconButton onClick={this.handleDrawerOpen} className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
         </Grid>
-        <Grid item xs={4}>
+        <Grid container spacing={24} direction="column"
+            alignItems="center"
+            justify="center">
+        
+        
+        <Grid item xs={12}>
           <img src={Gig_Finder_Logo} alt='Gig_Finder_Logo' height="100" />
         </Grid>
-        <Grid item xs={4}>
-          <Button /*onClick={this.handleDrawerOpen}*/ color="inherit"> Logout </Button>
         </Grid>
+       
+        <Grid item xs={6} justify='right'>
+          <Button  alignContent='flex-end' color="inherit"> Logout </Button>
         </Grid>
         </Toolbar>
       </AppBar>
