@@ -14,7 +14,7 @@ class App extends Component {
         <Navbar />
         <Calendar /> 
         {/* <CalendarCard /> */}
-        {/*<Forms />*/}
+       
       </div>
     );
   }

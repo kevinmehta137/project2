@@ -62,18 +62,16 @@ class Navbar extends React.Component {
             <MenuIcon />
           </IconButton>
         </Grid>
-        <Grid container spacing={24} direction="column"
+        <Grid container spacing={24} 
+            direction="column"
             alignItems="center"
             justify="center">
-        
-        
         <Grid item xs={12}>
-          <img src={Gig_Finder_Logo} alt='Gig_Finder_Logo' height="100" />
+          <img src={Gig_Finder_Logo} alt='Gig_Finder_Logo' height="120" />
         </Grid>
         </Grid>
-       
         <Grid item xs={6} justify='right'>
-          <Button  alignContent='flex-end' color="inherit"> Logout </Button>
+          
         </Grid>
         </Toolbar>
       </AppBar>
@@ -95,6 +93,7 @@ class Navbar extends React.Component {
             {/* <List><Button color="inherit"> Post a Job </Button></List> */}
             <List> <ManageJob />  </List>
             {/* <List><Button color="inherit"> Manage Job Posts </Button></List> */}
+            <Button color="inherit"> Logout </Button>
           </div>
         </Drawer>
     </div>
