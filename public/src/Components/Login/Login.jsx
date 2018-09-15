@@ -61,6 +61,10 @@ class LogIn extends React.Component{
     this.setState({ [name]: event.target.value });
     };
 
+    handleClickOpenCalendar = () => {
+    this.setState({ open: true });
+    };
+
     render () {
     const { classes } = this.props;
 
@@ -100,6 +104,7 @@ class LogIn extends React.Component{
                 variant="raised"
                 color="primary"
                 className={classes.submit}
+                onClick={this.handleClickOpenCalendar}
                 >
                 Sign in
                 </Button>

@@ -38,6 +38,10 @@ class SignUp extends React.Component {
     this.setState({ [name]: event.target.value });
     };
 
+    handleClickOpenCalendar = () => {
+    this.setState({ open: true });
+    };
+
     render () {
     const { classes } = this.props;
     return (
