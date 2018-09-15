@@ -25,6 +25,8 @@ app.set("view engine", "handlebars");
 // Routes
 // Routes
 require("./routes/apiRoutes")(app);
+require("./routes/jobpost-api-routes")(app);
+//html routes last
 require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };

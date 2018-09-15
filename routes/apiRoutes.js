@@ -30,8 +30,8 @@ module.exports = function(app) {
   });
 
   // Delete an employer by id
-  app.delete("/api/employer/:id", function(req, res) {
-    db.employer.destroy({ where: { id: req.params.id } }).then(function(dbemployer) {
+  app.delete("/api/employer/:employer_id", function(req, res) {
+    db.employer.destroy({ where: { employer_id: req.params.employer_id } }).then(function(dbemployer) {
       res.json(dbemployer);
     });
   });
