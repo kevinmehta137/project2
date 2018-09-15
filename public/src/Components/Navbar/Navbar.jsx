@@ -13,6 +13,8 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import PostJob from '../PostJob/PostJob';
 import ManageJob from '../ManageJob/ManageJob';
+import Gig_Finder_Logo from './images/Gig_Finder_Logo.jpg';
+import Grid from '@material-ui/core/Grid';
 
 const styles = {
   root: {
@@ -55,14 +57,19 @@ class Navbar extends React.Component {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
+        <Grid container spacing={24}>
+        <Grid item xs={4}>
           <IconButton onClick={this.handleDrawerOpen} className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="title" color="inherit" className={classes.grow}>
-            The Gig Finder
-          </Typography>
-          <img src='.../public/images/Gig_Finder_Logo.jpg'/>
+        </Grid>
+        <Grid item xs={4}>
+          <img src={Gig_Finder_Logo} alt='Gig_Finder_Logo' height="100" />
+        </Grid>
+        <Grid item xs={4}>
           <Button /*onClick={this.handleDrawerOpen}*/ color="inherit"> Logout </Button>
+        </Grid>
+        </Grid>
         </Toolbar>
       </AppBar>
       <Drawer
