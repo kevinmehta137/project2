@@ -61,6 +61,7 @@ class Navbar extends React.Component {
           <Typography variant="title" color="inherit" className={classes.grow}>
             The Gig Finder
           </Typography>
+          <img src='.../public/images/Gig_Finder_Logo.jpg'/>
           <Button /*onClick={this.handleDrawerOpen}*/ color="inherit"> Logout </Button>
         </Toolbar>
       </AppBar>
