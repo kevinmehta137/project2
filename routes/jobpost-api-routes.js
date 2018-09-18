@@ -53,6 +53,24 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/api/jobposts/date', function(req, res){
+    db.add_gigs.findAll({
+      attributes: ['gig_date']
+    }).then(function(dbadd_gigs) {
+      res.json(dbadd_gigs); 
+    })
+  })
+
+  app.get('/api/jobposts/date/:date', function(req, res){
+    db.add_gigs.findAll({
+      where: {
+        gig_date: req.params.datatype
+      }
+    }).then(function(dbadd_gigs) {
+      res.json(dbadd_gigs); 
+    })
+  })
+
   //POST route for saving a new post
   app.post("/api/jobposts", function(req, res) {
     console.log(req.body);

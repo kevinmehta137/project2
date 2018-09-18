@@ -14,7 +14,6 @@ import Divider from '@material-ui/core/Divider';
 import PostJob from '../PostJob/PostJob';
 import ManageJob from '../ManageJob/ManageJob';
 import CardMedia from '@material-ui/core/CardMedia';
-
 import Gig_Finder_Logo from './images/Gig_Finder_Logo.jpg';
 import Grid from '@material-ui/core/Grid';
 
