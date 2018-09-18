@@ -53,11 +53,9 @@ module.exports = function(app) {
     });
   });
 
-  app.get('/api/jobposts/:selectedDate', function(req, res){
-    db.add_gigs.findOne({
-      where: {
-        gig_date: req.params.selectedDate
-      }
+  app.get('/api/jobposts/date', function(req, res){
+    db.add_gigs.findAll({
+      attributes: ['gig_date']
     }).then(function(dbadd_gigs) {
       res.json(dbadd_gigs); 
     })
