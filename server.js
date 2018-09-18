@@ -22,7 +22,10 @@ app.engine(
     defaultLayout: "main"
   })
 );
-app.set("view engine", "handlebars");
+// app.set("view engine", "handlebars");
+app.set('views', __dirname + '/public/src');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 // Routes
 // Routes
