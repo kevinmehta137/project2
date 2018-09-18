@@ -28,6 +28,45 @@ module.exports = function(app) {
     });
   });
 
+   //route for getting all the posts of a specific user
+
+   app.get("/api/manageposts/", (req, res) => {
+    db.Post.findAll({
+      include: [
+        {
+          model: add_gigs
+        }
+      ]
+    }).then(employer => {
+      const resObj = employer.map(employer => {
+
+        return Object.assign(
+          {},
+          {
+            employer_name: employer_name,
+            employer_id: employer_id,
+            add_gigs: employer.add_gigs.map(add_gigs => {
+
+              return Object.assign(
+                {},
+                {
+                  id: id,
+                  gig_date: gig_date,
+                  gig_description: gig_description,
+                  gig_location: gig_location,
+                  gig_number_of_hours: gig_number_of_hours,
+                  gig_number_of_people: gig_number_of_people,
+                  gig_total_pay: gig_total_pay
+                }
+              )
+            })
+          }
+        )
+        res.json(resObj)
+      })
+    })
+  })
+
   // Get route for retrieving a single post
   app.get("/api/jobposts/:id", function(req, res) {
     // Here we add an "include" property to our options in our findOne query
@@ -68,6 +107,7 @@ module.exports = function(app) {
     });
   });
 
+  
   // DELETE route for deleting posts
   app.delete("/api/jobposts/:id", function(req, res) {
     db.add_gigs.destroy({
