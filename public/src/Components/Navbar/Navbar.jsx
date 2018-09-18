@@ -13,8 +13,13 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import PostJob from '../PostJob/PostJob';
 import ManageJob from '../ManageJob/ManageJob';
+<<<<<<< HEAD
 import CardMedia from '@material-ui/core/CardMedia';
 
+=======
+import Gig_Finder_Logo from './images/Gig_Finder_Logo.jpg';
+import Grid from '@material-ui/core/Grid';
+>>>>>>> edb4ad6eb93b0057b0e463cb18ac3b2e2adb837d
 
 const styles = {
   root: {
@@ -57,13 +62,29 @@ class Navbar extends React.Component {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
+        <Grid item xs={6}>
           <IconButton onClick={this.handleDrawerOpen} className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
+<<<<<<< HEAD
           <Typography variant="title" color="inherit" className={classes.grow}>
             The Gig Finder
             </Typography>
           <Button /*onClick={this.handleDrawerOpen}*/ color="inherit"> Logout </Button>
+=======
+        </Grid>
+        <Grid container spacing={24} 
+            direction="column"
+            alignItems="center"
+            justify="center">
+        <Grid item xs={12}>
+          <img src={Gig_Finder_Logo} alt='Gig_Finder_Logo' height="80" />
+        </Grid>
+        </Grid>
+        <Grid item xs={6} justify='right'>
+          
+        </Grid>
+>>>>>>> edb4ad6eb93b0057b0e463cb18ac3b2e2adb837d
         </Toolbar>
       </AppBar>
       <Drawer
@@ -84,6 +105,7 @@ class Navbar extends React.Component {
             {/* <List><Button color="inherit"> Post a Job </Button></List> */}
             <List> <ManageJob />  </List>
             {/* <List><Button color="inherit"> Manage Job Posts </Button></List> */}
+            <Button color="inherit"> Logout </Button>
           </div>
         </Drawer>
     </div>

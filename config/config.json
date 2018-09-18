@@ -1,17 +1,19 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
-    "database": "exampledb",
+    "username": "kevin",
+    "password": "kevin123",
+    "database": "gig_finderdb",
     "host": "localhost",
+    "port":3307,
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
+    "username": "kevin",
+    "password": "kevin123",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
+    "port":3307,
     "logging": false
   },
   "production": {

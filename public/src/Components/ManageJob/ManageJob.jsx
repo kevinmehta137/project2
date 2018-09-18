@@ -13,6 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
+import DeleteConfirm from '../DeleteConfirm/DeleteConfirm'
 
 const styles = {
   appBar: {
@@ -67,23 +68,27 @@ class ManageJob extends React.Component {
           <List>
             <ListItem button>
               <ListItemText primary="Job 1" secondary="Date Range" />
+              <DeleteConfirm />
               <Button>Edit</Button>
               <Button>Close</Button>
             </ListItem>
             <Divider />
             <ListItem button>
               <ListItemText primary="Job 2" secondary="Date Range" />
+              <DeleteConfirm />
               <Button>Edit</Button>
               <Button>Close</Button>
             </ListItem>
             <ListItem button>
               <ListItemText primary="Job 3" secondary="Date Range" />
+              <DeleteConfirm />
               <Button>Edit</Button>
               <Button>Close</Button>
             </ListItem>
             <Divider />
             <ListItem button>
               <ListItemText primary="Job 4" secondary="Date Range" />
+              <DeleteConfirm />
               <Button>Edit</Button>
               <Button>Close</Button>
             </ListItem>
