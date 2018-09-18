@@ -30,40 +30,11 @@ module.exports = function(app) {
 
    //route for getting all the posts of a specific user
 
-   app.get("/api/manageposts/", (req, res) => {
-    db.Post.findAll({
-      include: [
-        {
-          model: add_gigs
-        }
-      ]
-    }).then(employer => {
-      const resObj = employer.map(employer => {
-
-        return Object.assign(
-          {},
-          {
-            employer_name: employer_name,
-            employer_id: employer_id,
-            add_gigs: employer.add_gigs.map(add_gigs => {
-
-              return Object.assign(
-                {},
-                {
-                  id: id,
-                  gig_date: gig_date,
-                  gig_description: gig_description,
-                  gig_location: gig_location,
-                  gig_number_of_hours: gig_number_of_hours,
-                  gig_number_of_people: gig_number_of_people,
-                  gig_total_pay: gig_total_pay
-                }
-              )
-            })
-          }
-        )
-        res.json(resObj)
-      })
+   app.get("/api/manageposts/:employer_id", (req, res) => {
+    db.add_gigs.findAll({ 
+      where: { employerEmployerId: req.params.employer_id } 
+    }).then(function(dbemployer) {
+      res.json(dbemployer);
     })
   })
 
@@ -93,7 +64,8 @@ module.exports = function(app) {
       gig_number_of_hours: req.body.gig_number_of_hours,
       gig_number_of_people: req.body.gig_number_of_people,
       gig_rate: req.body.gig_rate,
-      gig_total_pay: req.body.gig_total_pay
+      gig_total_pay: req.body.gig_total_pay,
+      employerEmployerId: req.body.employer_id
     }).then(function(dbadd_gigs) {
       console.log("I was successful");
       console.log(dbadd_gigs.get({plain: true}));
