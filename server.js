@@ -3,6 +3,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
 
+
+
  var db = require("./models");
 
 var app = express();
@@ -33,7 +35,7 @@ var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
-if (process.env.NODE_ENV === "test") {
+if (process.env.NODE_ENV === "test" || process.env.NODE_ENV === 'development' ) {
   syncOptions.force = true;
 }
 
