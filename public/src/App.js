@@ -12,11 +12,7 @@ class App extends Component {
       <div className="App">
         {/*<MainPage />*/}
         <Navbar />
-<<<<<<< HEAD
-        <Calendar />
-=======
         <Calendar /> 
->>>>>>> edb4ad6eb93b0057b0e463cb18ac3b2e2adb837d
         {/* <CalendarCard /> */}
        
       </div>

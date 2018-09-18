@@ -1,10 +1,29 @@
 import React from "react";
 import dateFns from "date-fns";
+import axios from 'axios';
+import CalendarCard from '../CalendarCard/CalendarCard';
 
 class Calendar extends React.Component {
   state = {
     currentMonth: new Date(),
-    selectedDate: new Date()
+    selectedDate: new Date(),
+    selectableDays: ['2018-09-11'],
+    showCalendarCard: false,
+  };
+/*
+  res.json([4, 20])
+*/
+  
+  componentDidMount() {
+    // here I make my axios.get call
+    axios.get('/api/jobposts/' + this.state.selectedDate)
+    .then(data => data.json())
+    .then(jsonData => {
+      this.setState({selectableDays: jsonData})
+    })
+    .catch(function(error){
+      console.log(error);
+    })
   };
 
   renderHeader() {
@@ -89,9 +108,19 @@ class Calendar extends React.Component {
     return <div className="body">{rows}</div>;
   }
 
-  onDateClick = day => {
+  onDateClick = date => {
     this.setState({
-      selectedDate: day
+      selectedDate: date
+    }, () => {
+      var day = dateFns.format(date, 'YYYY-MM-DD')
+      if (this.state.selectableDays == day) {
+
+        this.setState({showCalendarCard: true})
+        console.log("I am a clickable day")
+      } else {
+        console.log("Date is: " + day)
+        
+      }
     });
   };
 
@@ -107,12 +136,24 @@ class Calendar extends React.Component {
     });
   };
 
+  renderCalendarCard = () => {
+    if (this.state.showCalendarCard) {
+      return (<div>
+        <CalendarCard />
+      </div>);// This will be your calendar card component
+    } else {
+      return '';// This will stay as return empty string
+    }
+  }
+
   render() {
     return (
       <div className="calendar">
+        {this.renderCalendarCard()}
         {this.renderHeader()}
         {this.renderDays()}
         {this.renderCells()}
+        {this.renderCalendarCard()}
       </div>
     );
   }

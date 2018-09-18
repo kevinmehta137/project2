@@ -82,6 +82,16 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/api/jobposts/:selectedDate', function(req, res){
+    db.add_gigs.findOne({
+      where: {
+        gig_date: req.params.selectedDate
+      }
+    }).then(function(dbadd_gigs) {
+      res.json(dbadd_gigs); 
+    })
+  })
+
   //POST route for saving a new post
   app.post("/api/jobposts", function(req, res) {
     console.log(req.body);

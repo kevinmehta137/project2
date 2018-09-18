@@ -28,6 +28,14 @@ const styles = {
   };
 
 function CalendarCard(props) {
+   /*  state = {
+      showCalendarCard = true
+    }
+
+    closeCard = () => {
+      this.setState({ showCalendarCard: false});
+    }; */
+
     const { classes } = props;
     const bull = <span className={classes.bullet}>•</span>;
 
@@ -42,6 +50,9 @@ function CalendarCard(props) {
         <CardActions>
           <Button size="small">Edit Posting</Button>
         </CardActions>
+        {/* <CardActions>
+          <Button onClick={this.closeCard}>Close</Button>
+        </CardActions> */}
       </Card>
     );
 }
