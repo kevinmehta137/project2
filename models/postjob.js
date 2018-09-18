@@ -40,5 +40,13 @@ module.exports = function(sequelize, DataTypes) {
       timestamps:false
     }
   );
+
+  add_gigs.associate = function(models) {
+    add_gigs.belongsTo(models.employer, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  }
     return add_gigs;
   };
