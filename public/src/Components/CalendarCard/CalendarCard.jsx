@@ -29,8 +29,8 @@ const styles = {
 
 class CalendarCard extends React.Component  {
    state = {
-      showCalendarCard = true,
-      dateInfo = {}
+      showCalendarCard : true,
+      dateInfo : {}
     }
 
     closeCard = () => {
@@ -39,15 +39,17 @@ class CalendarCard extends React.Component  {
 
     componentDidMount() {
       // here I make my axios.get call
-      axios.get('/api/jobposts/date/:' + req.body.datatype)
+      axios.get('/api/jobposts/date' )//+ req.body.datatype)
       .then(data => data.json())
       .then(jsonData => {
         this.setState({dateInfo: jsonData})
+        console.log(this.setState({dateInfo: jsonData}));
       })
       .catch(function(error){
         console.log(error);
       })
     };
+
   render () {
     const { classes } = this.props;
     const bull = <span className={classes.bullet}>•</span>;

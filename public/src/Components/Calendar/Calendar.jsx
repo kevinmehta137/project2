@@ -7,7 +7,7 @@ class Calendar extends React.Component {
   state = {
     currentMonth: new Date(),
     selectedDate: new Date(),
-    selectableDays: ['2018-09-11'],
+    selectableDays: [],
     showCalendarCard: false,
   };
 /*
@@ -16,7 +16,7 @@ class Calendar extends React.Component {
   
   componentDidMount() {
     // here I make my axios.get call
-    axios.get('/api/jobposts/date')
+    axios.get('api/jobposts/date')
     .then(data => data.json())
     .then(jsonData => {
       this.setState({selectableDays: jsonData})
