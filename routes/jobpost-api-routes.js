@@ -28,6 +28,16 @@ module.exports = function(app) {
     });
   });
 
+   //route for getting all the posts of a specific user
+
+   app.get("/api/manageposts/:employer_id", (req, res) => {
+    db.add_gigs.findAll({ 
+      where: { employerEmployerId: req.params.employer_id } 
+    }).then(function(dbemployer) {
+      res.json(dbemployer);
+    })
+  })
+
   // Get route for retrieving a single post
   app.get("/api/jobposts/:id", function(req, res) {
     // Here we add an "include" property to our options in our findOne query
@@ -43,6 +53,24 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/api/jobposts/date', function(req, res){
+    db.add_gigs.findAll({
+      attributes: ['gig_date']
+    }).then(function(dbadd_gigs) {
+      res.json(dbadd_gigs); 
+    })
+  })
+
+  app.get('/api/jobposts/date/:date', function(req, res){
+    db.add_gigs.findAll({
+      where: {
+        gig_date: req.params.datatype
+      }
+    }).then(function(dbadd_gigs) {
+      res.json(dbadd_gigs); 
+    })
+  })
+
   //POST route for saving a new post
   app.post("/api/jobposts", function(req, res) {
     console.log(req.body);
@@ -54,7 +82,8 @@ module.exports = function(app) {
       gig_number_of_hours: req.body.gig_number_of_hours,
       gig_number_of_people: req.body.gig_number_of_people,
       gig_rate: req.body.gig_rate,
-      gig_total_pay: req.body.gig_total_pay
+      gig_total_pay: req.body.gig_total_pay,
+      employerEmployerId: req.body.employer_id
     }).then(function(dbadd_gigs) {
       console.log("I was successful");
       console.log(dbadd_gigs.get({plain: true}));
@@ -68,6 +97,7 @@ module.exports = function(app) {
     });
   });
 
+  
   // DELETE route for deleting posts
   app.delete("/api/jobposts/:id", function(req, res) {
     db.add_gigs.destroy({

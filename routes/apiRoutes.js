@@ -15,6 +15,10 @@ module.exports = function(app) {
     });
   });
 
+
+  //creating the data for manage job section using each employer's unique postings
+
+  
   // Create a new enployer
   app.post("/api/employer", function(req, res) {
     db.employer.create({
@@ -23,7 +27,10 @@ module.exports = function(app) {
       employer_password:req.body.employer_password,
       employer_confirmpassword:req.body.employer_confirmpassword
       
-    }).then(function(dbemployer) {
+    }, {
+      include: [ db.add_gigs ]
+    }
+  ).then(function(dbemployer) {
 
       res.json(dbemployer);
     });
