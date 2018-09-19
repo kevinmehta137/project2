@@ -8,7 +8,7 @@ class Calendar extends React.Component {
     currentMonth: new Date(),
     selectedDate: new Date(),
     selectableDays: [],
-    showCalendarCard: false,
+    //showCalendarCard: false,
   };
 /*
   res.json([4, 20])
@@ -16,10 +16,14 @@ class Calendar extends React.Component {
   
   componentDidMount() {
     // here I make my axios.get call
-    axios.get('api/jobposts/date')
-    .then(data => data.json())
-    .then(jsonData => {
-      this.setState({selectableDays: jsonData})
+    axios.get('api/jobposts/date/1')
+    .then((response)=>{
+      var dates = [];
+      for (var i = 0 ; i < response.data.length; i++){
+      console.log(response.data[i].gig_date)
+      dates.push(response.data[i].gig_date)}
+      this.setState({selectableDays: dates})
+      console.log(this.state.selectableDays);
     })
     .catch(function(error){
       console.log(error);
@@ -63,6 +67,16 @@ class Calendar extends React.Component {
     return <div className="days row">{days}</div>;
   }
 
+  /* renderCalendarCard = () => {
+    if (this.state.showCalendarCard) {
+      return (<div>
+        <CalendarCard />
+      </div>);// This will be your calendar card component
+    } else {
+      return '';// This will stay as return empty string
+    }
+  } */
+
   renderCells() {
     const { currentMonth, selectedDate } = this.state;
     const monthStart = dateFns.startOfMonth(currentMonth);
@@ -81,7 +95,26 @@ class Calendar extends React.Component {
       for (let i = 0; i < 7; i++) {
         formattedDate = dateFns.format(day, dateFormat);
         const cloneDay = day;
-        days.push(
+        if( this.state.selectableDays.indexOf(dateFns.format(day, 'YYYY-MM-DD')) !== -1){
+          {days.push(
+            <div
+              className={`col cell ${
+                !dateFns.isSameMonth(day, monthStart)
+                  ? "disabled"
+                  : dateFns.isSameDay(day, selectedDate) ? "selected" : ""
+              }`}
+              datatype = {dateFns.format(day, 'YYYY-MM-DD')}
+              key={day}
+              onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
+            >
+              <span className="number">{formattedDate}</span>
+              <span className="bg">{formattedDate}</span>
+              <CalendarCard />
+            </div>
+          )}
+        }
+        else
+        {days.push(
           <div
             className={`col cell ${
               !dateFns.isSameMonth(day, monthStart)
@@ -95,7 +128,7 @@ class Calendar extends React.Component {
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
           </div>
-        );
+        )};
         day = dateFns.addDays(day, 1);
       }
       rows.push(
@@ -114,7 +147,6 @@ class Calendar extends React.Component {
     }, () => {
       var day = dateFns.format(date, 'YYYY-MM-DD')
       if (this.state.selectableDays == day) {
-
         this.setState({showCalendarCard: true})
         console.log("I am a clickable day")
       } else {
@@ -136,24 +168,12 @@ class Calendar extends React.Component {
     });
   };
 
-  renderCalendarCard = () => {
-    if (this.state.showCalendarCard) {
-      return (<div>
-        <CalendarCard />
-      </div>);// This will be your calendar card component
-    } else {
-      return '';// This will stay as return empty string
-    }
-  }
-
   render() {
     return (
       <div className="calendar">
-        {this.renderCalendarCard()}
         {this.renderHeader()}
         {this.renderDays()}
         {this.renderCells()}
-        {this.renderCalendarCard()}
       </div>
     );
   }
