@@ -16,11 +16,16 @@ class Calendar extends React.Component {
   
   componentDidMount() {
     // here I make my axios.get call
-    axios.get('api/jobposts/date')
-    .then(data => data.json())
-    .then(jsonData => {
-      this.setState({selectableDays: jsonData})
+    axios.get('api/jobposts/date/1')
+    .then((response)=>{
+      //for (var i = 0 ; i < response.data.length; i++){
+      console.log(response.data[0].gig_date)
+      var dates = response.data[0].gig_date//}
+      this.setState({selectableDays: dates})
     })
+    /* .then(jsonData => {
+      this.setState({selectableDays: jsonData})
+    }) */
     .catch(function(error){
       console.log(error);
     })
@@ -153,7 +158,6 @@ class Calendar extends React.Component {
         {this.renderHeader()}
         {this.renderDays()}
         {this.renderCells()}
-        {this.renderCalendarCard()}
       </div>
     );
   }
