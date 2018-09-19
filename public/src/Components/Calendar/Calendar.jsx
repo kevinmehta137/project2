@@ -23,6 +23,7 @@ class Calendar extends React.Component {
       console.log(response.data[i].gig_date)
       dates.push(response.data[i].gig_date)}
       this.setState({selectableDays: dates})
+      console.log(this.state.selectableDays);
     })
     .catch(function(error){
       console.log(error);
@@ -94,7 +95,7 @@ class Calendar extends React.Component {
       for (let i = 0; i < 7; i++) {
         formattedDate = dateFns.format(day, dateFormat);
         const cloneDay = day;
-        if( dateFns.format(day, 'YYYY-MM-DD') == this.state.selectableDays){
+        if( this.state.selectableDays.indexOf(dateFns.format(day, 'YYYY-MM-DD')) !== -1){
           {days.push(
             <div
               className={`col cell ${
@@ -108,7 +109,7 @@ class Calendar extends React.Component {
             >
               <span className="number">{formattedDate}</span>
               <span className="bg">{formattedDate}</span>
-              <CalendarCard/>
+              <CalendarCard />
             </div>
           )}
         }

@@ -50,7 +50,7 @@ class CalendarCard extends React.Component  {
 
     componentDidMount() {
       // here I make my axios.get call
-      axios.get('api/jobposts/id/1/date/2018-09-21')//+ req.body.datatype)
+      axios.get('api/jobposts/id/1/date/')// + {this.props.datatype} )
       .then( (response) =>{
         console.log(response.data);
         var info = response.data[0];
