@@ -1,9 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import Grid from '@material-ui/core/Grid';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import axios from 'axios';
@@ -29,20 +32,29 @@ const styles = {
 
 class CalendarCard extends React.Component  {
    state = {
-      showCalendarCard : true,
+      open : false,
       dateInfo : []
     }
 
-    closeCard = () => {
-      this.setState({ showCalendarCard: false});
+    handleClickOpen = () => {
+    this.setState({ open: true });
+    };
+
+    handleClose = () => {
+    this.setState({ open: false });
+    };
+  
+    handleChange = name => event => {
+    this.setState({ [name]: event.target.value });
     };
 
     componentDidMount() {
       // here I make my axios.get call
-      axios.get('api/jobposts/date/1/2018-09-21')//+ req.body.datatype)
+      axios.get('api/jobposts/id/1/date/2018-09-21')//+ req.body.datatype)
       .then( (response) =>{
-        console.log(response.data)
-        //this.setState({dateInfo : dateCard})
+        console.log(response.data);
+        var info = response.data[0];
+        this.setState({dateInfo : info})
       })
       .catch(function(error){
         console.log(error);
@@ -51,29 +63,48 @@ class CalendarCard extends React.Component  {
 
   render () {
     const { classes } = this.props;
-    const bull = <span className={classes.bullet}>•</span>;
 
   return (
-      <Card className={classes.card}>
-        <CardContent>
+    <div>
+      <Button onClick={this.handleClickOpen}> Gig </Button>
+    <Dialog
+    open={this.state.open}
+    onClose={this.handleClose}
+    aria-labelledby="form-dialog-title"
+    >
+    <DialogTitle> Gig Info </DialogTitle>
+        <DialogContent>
+        <Grid container spacing={24}>
+            <Grid item md={12}>
           <List style={{fontWeight: 'bold', fontSize: 24}}>Job Type</List>
           <List> {this.state.dateInfo.gig_description}</List>
+            </Grid>
+            <Grid item md={12}>
           <List style={{fontSize: 14}}>Location</List>
           <List> {this.state.dateInfo.gig_location}</List>
+            </Grid>
+            <Grid item md={12}>
           <List style={{fontSize: 14}}>Hours</List>
           <List> {this.state.dateInfo.gig_number_of_hours}</List>
+            </Grid>
+            <Grid item md={12}>
           <List style={{fontSize: 14}}>Number of People</List>
           <List> {this.state.dateInfo.gig_number_of_people}</List>
+            </Grid>
+            <Grid item md={12}>
           <List style={{fontSize: 14}}>Rate</List>
           <List> {this.state.dateInfo.gig_rate}</List>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Edit Posting</Button>
-        </CardActions>
-        {/* <CardActions>
-          <Button onClick={this.closeCard}>Close</Button>
-        </CardActions> */}
-      </Card>
+          </Grid>
+          </Grid>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={this.handleClose}>Edit Posting</Button>
+        </DialogActions>
+        <DialogActions>
+          <Button onClick={this.handleClose}>Close</Button>
+        </DialogActions>
+      </Dialog>
+      </div>
     );}
 }
 
