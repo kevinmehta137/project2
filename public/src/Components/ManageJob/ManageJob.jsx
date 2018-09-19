@@ -14,6 +14,8 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import DeleteConfirm from '../DeleteConfirm/DeleteConfirm'
+import axios from 'axios';
+
 
 const styles = {
   appBar: {
@@ -31,8 +33,10 @@ function Transition(props) {
 class ManageJob extends React.Component {
   state = {
     open: false,
+    jobs: []
   };
 
+  
   handleClickOpen = () => {
     this.setState({ open: true });
   };
@@ -40,6 +44,20 @@ class ManageJob extends React.Component {
   handleClose = () => {
     this.setState({ open: false });
   };
+
+//axios call to get data from the database and populate the manage jobs list
+  componentDidMount() {
+    axios.get('api/manageposts/:employer_id/' )
+    .then(data => data.json())
+    .then(jsonData => {
+      this.setState({jobs: jsonData})
+      console.log(this.setState({jobs: jsonData}));
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+  };
+
 
   render() {
     const { classes } = this.props;
@@ -66,32 +84,21 @@ class ManageJob extends React.Component {
             </Toolbar>
           </AppBar>
           <List>
+
+            {/* this is where the data is being rendered */}
+
             <ListItem button>
-              <ListItemText primary="Job 1" secondary="Date Range" />
+              <ListItemText 
+               primary= 
+               {this.state.jobs.gig_description}
+               secondary= 
+               {this.state.jobs.gig_date} />
               <DeleteConfirm />
               <Button>Edit</Button>
               <Button>Close</Button>
             </ListItem>
             <Divider />
-            <ListItem button>
-              <ListItemText primary="Job 2" secondary="Date Range" />
-              <DeleteConfirm />
-              <Button>Edit</Button>
-              <Button>Close</Button>
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Job 3" secondary="Date Range" />
-              <DeleteConfirm />
-              <Button>Edit</Button>
-              <Button>Close</Button>
-            </ListItem>
-            <Divider />
-            <ListItem button>
-              <ListItemText primary="Job 4" secondary="Date Range" />
-              <DeleteConfirm />
-              <Button>Edit</Button>
-              <Button>Close</Button>
-            </ListItem>
+          
           </List>
         </Dialog>
       </div>
