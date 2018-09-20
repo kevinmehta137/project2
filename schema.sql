@@ -35,6 +35,8 @@ CREATE TABLE add_gigs
     gig_number_of_people int NOT NULL,
     gig_rate int NOT NULL,
     gig_total_pay int NOT NULL,
+    employer_id int NOT NULL,
+    employerEmployerId int NOT NULL
     PRIMARY KEY (id)
 );
 
