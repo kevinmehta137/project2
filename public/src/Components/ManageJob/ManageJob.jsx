@@ -36,6 +36,10 @@ class ManageJob extends React.Component {
     jobs: []
   };
 
+    constructor (props) {
+      super(props);
+      this.getJobs= this.getJobs.bind(this) 
+    }
   
   handleClickOpen = () => {
     this.setState({ open: true });
@@ -47,7 +51,11 @@ class ManageJob extends React.Component {
 
 //axios call to get data from the database and populate the manage jobs list
   componentDidMount() {
-    axios.get('/api/manageposts/1/')
+    this.getJobs();
+  };
+ 
+  getJobs () {
+    axios.get('/api/manageposts/2/')
     .then ( (response) =>{
       console.log(response.data) 
         var jobData = response.data;
@@ -57,7 +65,7 @@ class ManageJob extends React.Component {
     .catch(function(error){
       console.log(error);
     })
-  };
+  }
 
 
   render() {
@@ -77,11 +85,9 @@ class ManageJob extends React.Component {
                 <CloseIcon />
               </IconButton>
               <Typography variant="title" color="inherit" className={classes.flex}>
-                Edit or Close A Listing
+                Manage Your Listings
               </Typography>
-              <Button color="inherit" onClick={this.handleClose}>
-                save
-              </Button>
+              
             </Toolbar>
           </AppBar>
           <List>
@@ -99,9 +105,9 @@ class ManageJob extends React.Component {
                {job.id}
                
                 />
-              <DeleteConfirm />
+              <DeleteConfirm {...job} onDelete={this.getJobs} />
               <Button>Edit</Button>
-              <Button>Close</Button>
+              
             </ListItem>
             )
           })}

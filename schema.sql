@@ -13,6 +13,18 @@ CREATE TABLE employer_signup
     PRIMARY KEY (employer_id)
 );
 
+CREATE TABLE employers
+(
+    employer_id int NOT NULL AUTO_INCREMENT,
+    employer_name VARCHAR(255) NOT NULL,
+    employer_email VARCHAR(255) NOT NULL,
+    employer_password VARCHAR(255) NOT NULL,
+    employer_confirmpassword VARCHAR(255) NOT NULL,
+    PRIMARY KEY (employer_id)
+);
+
+
+
 CREATE TABLE add_gigs
 (
     id int NOT NULL AUTO_INCREMENT,
@@ -23,6 +35,8 @@ CREATE TABLE add_gigs
     gig_number_of_people int NOT NULL,
     gig_rate int NOT NULL,
     gig_total_pay int NOT NULL,
+    employer_id int NOT NULL,
+    employerEmployerId int NOT NULL
     PRIMARY KEY (id)
 );
 
