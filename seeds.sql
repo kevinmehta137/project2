@@ -1,5 +1,5 @@
 --Employer 1
-INSERT INTO employer
+INSERT INTO employers
 (
     employer_name, 
     employer_email, 
@@ -14,7 +14,7 @@ INSERT INTO employer
 );
 
 --Employer 2
-INSERT INTO employer
+INSERT INTO employers
 (
     employer_name, 
     employer_email, 
@@ -38,7 +38,8 @@ INSERT INTO add_gigs
     gig_number_of_people,
     gig_rate,
     gig_total_pay,
-    employer_id
+    employer_id,
+    employerEmployerId
 ) VALUES 
 (
     '2018-09-23',
@@ -48,6 +49,7 @@ INSERT INTO add_gigs
     1,
     12,
     36,
+    1,
     1
 );
 
@@ -61,7 +63,8 @@ INSERT INTO add_gigs
     gig_number_of_people,
     gig_rate,
     gig_total_pay,
-    employer_id
+    employer_id,
+    employerEmployerId
 ) VALUES 
 (
     '2018-09-26',
@@ -71,6 +74,7 @@ INSERT INTO add_gigs
     2,
     12,
     360,
+    1,
     1
 );
 
@@ -84,7 +88,8 @@ INSERT INTO add_gigs
     gig_number_of_people,
     gig_rate,
     gig_total_pay,
-    employer_id
+    employer_id,
+    employerEmployerId
 ) VALUES 
 (
     '2018-09-28',
@@ -94,6 +99,7 @@ INSERT INTO add_gigs
     1,
     15,
     120,
+    2,
     2
 );
 
@@ -107,7 +113,8 @@ INSERT INTO add_gigs
     gig_number_of_people,
     gig_rate,
     gig_total_pay,
-    employer_id
+    employer_id,
+    employerEmployerId
 ) VALUES 
 (
     '2018-09-30',
@@ -117,6 +124,7 @@ INSERT INTO add_gigs
     1,
     12,
     96,
+    2,
     2
 );
 
