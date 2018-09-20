@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
 import Grid from '@material-ui/core/Grid';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
@@ -30,8 +31,7 @@ const styles = {
 };
 
 class CalendarCard extends React.Component  {
-   
-    state = {
+   state = {
       open : false,
       dateInfo : []
     }
@@ -49,7 +49,6 @@ class CalendarCard extends React.Component  {
     };
 
     componentDidMount() {
-      console.log(this.props)
       // here I make my axios.get call
       axios.get(`/api/jobposts/id/1/date/${this.props.date}`)
       .then( (response) =>{
@@ -64,7 +63,7 @@ class CalendarCard extends React.Component  {
 
   render () {
     const { classes } = this.props;
-    
+
   return (
     <div>
       <Button onClick={this.handleClickOpen}> Gig </Button>
