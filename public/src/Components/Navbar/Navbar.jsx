@@ -14,6 +14,8 @@ import PostJob from '../PostJob/PostJob';
 import ManageJob from '../ManageJob/ManageJob';
 import Gig_Finder_Logo from './images/Gig_Finder_Logo.jpg';
 import Grid from '@material-ui/core/Grid';
+import axios from 'axios';
+
 
 const styles = {
   root: {
@@ -38,8 +40,18 @@ const styles = {
 };
 
 class Navbar extends React.Component {
-    state = { drawerIsOpen: false }
+    state = { drawerIsOpen: false,
+    jobs: []
+    }
 
+    newJobHandler = newgig => {
+      console.log('Handling Job');
+      var newJob = this.state.jobs.slice();
+      newJob.push(JSON.parse(newgig.config.data));
+      console.log(JSON.parse(newgig.config.data));
+      this.setState({jobs: newJob})
+    }
+    
   handleDrawerOpen = () => {
     this.setState({ drawerIsOpen: true });
   };
@@ -48,6 +60,22 @@ class Navbar extends React.Component {
     this.setState({ drawerIsOpen: false });
   };
 
+  componentDidMount() {
+    this.getJobs();
+  };
+ 
+  getJobs () {
+    axios.get('/api/manageposts/1/')
+    .then ( (response) =>{
+      console.log(response.data) 
+        var jobData = response.data;
+        this.setState({jobs: jobData})
+      })
+    
+    .catch(function(error){
+      console.log(error);
+    })
+  }
 
   render () {
       const { classes } = this.props;
@@ -88,8 +116,8 @@ class Navbar extends React.Component {
           </div>
           <Divider />
           <div className={classes.drawerInner}>
-            <List> <PostJob dayHandler = {this.props.dayHandler}/>  </List>
-            <List> <ManageJob />  </List>
+            <List> <PostJob dayHandler = {this.props.dayHandler} jobHandler = {this.newJobHandler}/>  </List>
+            <List> <ManageJob getJobs = {this.state.jobs}/>  </List>
             <Button color="inherit"> Logout </Button>
           </div>
         </Drawer>
