@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -13,7 +12,6 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import PostJob from '../PostJob/PostJob';
 import ManageJob from '../ManageJob/ManageJob';
-import CardMedia from '@material-ui/core/CardMedia';
 import Gig_Finder_Logo from './images/Gig_Finder_Logo.jpg';
 import Grid from '@material-ui/core/Grid';
 
@@ -90,10 +88,8 @@ class Navbar extends React.Component {
           </div>
           <Divider />
           <div className={classes.drawerInner}>
-            <List> <PostJob />  </List>
-            {/* <List><Button color="inherit"> Post a Job </Button></List> */}
+            <List> <PostJob dayHandler = {this.props.dayHandler}/>  </List>
             <List> <ManageJob />  </List>
-            {/* <List><Button color="inherit"> Manage Job Posts </Button></List> */}
             <Button color="inherit"> Logout </Button>
           </div>
         </Drawer>

@@ -9,8 +9,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
+import axios from 'axios';
 
 const styles = theme => ({
   container: {
@@ -41,33 +40,39 @@ class PostJob extends React.Component {
     this.setState({ [name]: event.target.value });
     };
 
-    //  handleSubmit = event => {
-    //   event.preventDefault();
+    handleSubmit = event => {
+      event.preventDefault();
   
-    //   const gig = {
-    //     gig_date: this.state.date,
-    //     gig_description: this.state.workType,
-    //     gig_location: this.state.location,
-    //     gig_number_of_hours: req.body.gig_number_of_hours,
-    //     gig_number_of_people: req.body.gig_number_of_people,
-    //     gig_rate: req.body.gig_rate,
-    //     gig_total_pay: req.body.gig_total_pay,
-    //     employerEmployerId: req.body.employer_id
-    //   };
+      const gig = {
+        gig_date: this.state.date,
+        gig_description: this.state.title,
+        gig_location: this.state.location,
+        gig_number_of_hours: this.state.hours,
+        gig_number_of_people: this.state.numberPeople,
+        gig_rate: this.state.payRate,
+        gig_total_pay: this.state.totalPay,
+        employerEmployerId: 1,
+        employer_id: 1
+      };
   
-    //   axios.post(`/api/jobposts`, { user })
-    //     .then(res => {
-    //       console.log(res);
-    //       console.log(res.data);
-    //     })
-    // } 
+      axios.post(`/api/jobposts`, gig)
+      .then((response)=> {
+        console.log(response);
+        console.log('POOOp');
+        this.props.dayHandler(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      this.handleClose();
+      
+    }
 
     render () {
     const { classes } = this.props;
     return (
         <div>
         <Button onClick={this.handleClickOpen}> Post A Job </Button>
-        <form onSubmit={this.handleSubmit}>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -83,92 +88,86 @@ class PostJob extends React.Component {
             <TextField
               required
               margin="dense"
-              id="name"
-              label="Job Title"
+              label="Job Description"
               type="title"
               fullWidth
+              value = {this.state.title}
+              onChange = {this.handleChange('title')}
             />
             </Grid>
             <Grid item xs={12} sm={6}>
             <TextField
               required
               margin="dense"
-              id="location"
               label="Job Location"
               type="title"
               fullWidth
+              value = {this.state.location}
+              onChange = {this.handleChange('location')}
             />
             </Grid>
             <Grid item xs={12} sm={6}>
             <TextField
               required
               margin="dense"
-              id="poolSize"
               label="# of People"
               type="title"
               fullWidth
+              value = {this.state.numberPeople}
+              onChange = {this.handleChange('numberPeople')}
             />
             </Grid>
             <Grid item xs={12} sm={6}>
             <TextField
               required
               margin="dense"
-              id="workType"
-              label="Type of Work"
+              label="Total Pay"
               type="title"
               fullWidth
+              value = {this.state.totalPay}
+              onChange = {this.handleChange('totalPay')}
             />
             </Grid>
             <Grid item xs={12} sm={6}>
             <TextField
-            id="date"
             label="Date"
             type="date"
             defaultValue="2018-09-24"
             className={classes.textField}
             InputLabelProps={{shrink: true,}}
+            value = {this.state.date}
+            onChange = {this.handleChange('date')}
             />
-            </Grid>
-            
-            <Grid item xs={12} sm={6}>
-            <InputLabel htmlFor="rate-native-simple">Rate of Pay  </InputLabel>
-            <Select
-              margin="dense"
-              native
-              value={this.state.age}
-              onChange={this.handleChange('rate')}
-              inputProps={{
-                name: 'Rate',
-                id: 'payRate',
-              }}
-            >
-            <option value="" />
-            <option value={'daily'}>All Day</option>
-            <option value={'hourly'}>Hourly</option>
-          </Select>            
             </Grid>
             <Grid item xs={12} sm={6}>
             <TextField
-              required
-              margin="dense"
-              id="amount"
-              label="Amount or Rate"
-              type="title"
-              fullWidth
+            label="Pay Rate"
+            type="title"
+            className={classes.textField}
+            value = {this.state.payRate}
+            onChange = {this.handleChange('payRate')}
             />
-            </Grid>            
+            </Grid>
+            <Grid item xs={12} sm={6}>
+            <TextField
+            label="# of Hours"
+            type="title"
+            className={classes.textField}
+            value = {this.state.hours}
+            onChange = {this.handleChange('hours')}
+            />
+            </Grid>
             </Grid>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleClose} type="submit" color="primary">
+            <Button onClick={this.handleSubmit} type="submit" color="primary">
               Sumbit
             </Button>
           </DialogActions>
         </Dialog>
-        </form>
         </div>
     );
     }
