@@ -58,8 +58,12 @@ class PostJob extends React.Component {
       axios.post(`/api/jobposts`, gig)
       .then((response)=> {
         console.log(response);
-        console.log('POOOp');
+        ;
         this.props.dayHandler(response);
+        //triggers a rerender of ManageJob
+        // this.props.onPost();
+        this.props.jobHandler(response);
+
       })
       .catch(function (error) {
         console.log(error);
@@ -164,7 +168,7 @@ class PostJob extends React.Component {
               Cancel
             </Button>
             <Button onClick={this.handleSubmit} type="submit" color="primary">
-              Sumbit
+              Submit
             </Button>
           </DialogActions>
         </Dialog>
