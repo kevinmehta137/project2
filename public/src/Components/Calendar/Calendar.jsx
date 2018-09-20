@@ -1,33 +1,11 @@
 import React from "react";
 import dateFns from "date-fns";
-import axios from 'axios';
 import CalendarCard from '../CalendarCard/CalendarCard';
 
 class Calendar extends React.Component {
   state = {
     currentMonth: new Date(),
     selectedDate: new Date(),
-    selectableDays: [],
-    //showCalendarCard: false,
-  };
-/*
-  res.json([4, 20])
-*/
-  
-  componentDidMount() {
-    // here I make my axios.get call
-    axios.get('api/jobposts/date/1')
-    .then((response)=>{
-      var dates = [];
-      for (var i = 0 ; i < response.data.length; i++){
-      console.log(response.data[i].gig_date)
-      dates.push(response.data[i].gig_date)}
-      this.setState({selectableDays: dates})
-      console.log(this.state.selectableDays);
-    })
-    .catch(function(error){
-      console.log(error);
-    })
   };
 
   renderHeader() {
@@ -67,16 +45,6 @@ class Calendar extends React.Component {
     return <div className="days row">{days}</div>;
   }
 
-  /* renderCalendarCard = () => {
-    if (this.state.showCalendarCard) {
-      return (<div>
-        <CalendarCard />
-      </div>);// This will be your calendar card component
-    } else {
-      return '';// This will stay as return empty string
-    }
-  } */
-
   renderCells() {
     const { currentMonth, selectedDate } = this.state;
     const monthStart = dateFns.startOfMonth(currentMonth);
@@ -95,7 +63,7 @@ class Calendar extends React.Component {
       for (let i = 0; i < 7; i++) {
         formattedDate = dateFns.format(day, dateFormat);
         const cloneDay = day;
-        if( this.state.selectableDays.indexOf(dateFns.format(day, 'YYYY-MM-DD')) !== -1){
+        if( this.props.selectableDays.indexOf(dateFns.format(day, 'YYYY-MM-DD')) !== -1){
           {days.push(
             <div
               className={`col cell ${
@@ -145,7 +113,7 @@ class Calendar extends React.Component {
       selectedDate: date
     }, () => {
       var day = dateFns.format(date, 'YYYY-MM-DD')
-      if (this.state.selectableDays == day) {
+      if (this.props.selectableDays == day) {
         this.setState({showCalendarCard: true})
         console.log("I am a clickable day")
       } else {

@@ -86,7 +86,8 @@ module.exports = function(app) {
       gig_number_of_people: req.body.gig_number_of_people,
       gig_rate: req.body.gig_rate,
       gig_total_pay: req.body.gig_total_pay,
-      employerEmployerId: req.body.employer_id
+      employerEmployerId: req.body.employer_id,
+      employer_id: req.body.employer_id
     }).then(function(dbadd_gigs) {
       console.log("I was successful");
       console.log(dbadd_gigs.get({plain: true}));

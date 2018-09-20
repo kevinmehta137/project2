@@ -90,7 +90,7 @@ class Navbar extends React.Component {
           </div>
           <Divider />
           <div className={classes.drawerInner}>
-            <List> <PostJob />  </List>
+            <List> <PostJob dayHandler = {this.props.dayHandler}/>  </List>
             {/* <List><Button color="inherit"> Post a Job </Button></List> */}
             <List> <ManageJob />  </List>
             {/* <List><Button color="inherit"> Manage Job Posts </Button></List> */}
