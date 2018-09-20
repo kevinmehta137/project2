@@ -38,7 +38,7 @@ class ManageJob extends React.Component {
 
     constructor (props) {
       super(props);
-      this.getJobs= this.getJobs.bind(this) 
+      this.getJobs= this.getJobs.bind(this)   
     }
   
   handleClickOpen = () => {
@@ -55,7 +55,7 @@ class ManageJob extends React.Component {
   };
  
   getJobs () {
-    axios.get('/api/manageposts/2/')
+    axios.get('/api/manageposts/1/')
     .then ( (response) =>{
       console.log(response.data) 
         var jobData = response.data;
