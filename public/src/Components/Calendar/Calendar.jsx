@@ -109,7 +109,7 @@ class Calendar extends React.Component {
             >
               <span className="number">{formattedDate}</span>
               <span className="bg">{formattedDate}</span>
-              <CalendarCard />
+              <CalendarCard date={dateFns.format(day, 'YYYY-MM-DD')}/>
             </div>
           )}
         }

@@ -31,7 +31,8 @@ const styles = {
 };
 
 class CalendarCard extends React.Component  {
-   state = {
+   
+    state = {
       open : false,
       dateInfo : []
     }
@@ -49,8 +50,9 @@ class CalendarCard extends React.Component  {
     };
 
     componentDidMount() {
+      console.log(this.props)
       // here I make my axios.get call
-      axios.get('api/jobposts/id/1/date/')// + {this.props.datatype} )
+      axios.get(`/api/jobposts/id/1/date/${this.props.date}`)
       .then( (response) =>{
         console.log(response.data);
         var info = response.data[0];
@@ -63,7 +65,7 @@ class CalendarCard extends React.Component  {
 
   render () {
     const { classes } = this.props;
-
+    
   return (
     <div>
       <Button onClick={this.handleClickOpen}> Gig </Button>
