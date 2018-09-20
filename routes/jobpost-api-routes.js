@@ -53,19 +53,22 @@ module.exports = function(app) {
     });
   });
 
-  app.get('/api/jobposts/date', function(req, res){
+  app.get('/api/jobposts/date/:id', function(req, res){
     db.add_gigs.findAll({
+      where: { employerEmployerId: req.params.id},
       attributes: ['gig_date']
     }).then(function(dbadd_gigs) {
       res.json(dbadd_gigs); 
     })
   })
 
-  app.get('/api/jobposts/date/:date', function(req, res){
+  app.get('/api/jobposts/id/:id/date/:date', function(req, res){
     db.add_gigs.findAll({
       where: {
-        gig_date: req.params.datatype
-      }
+        employerEmployerId: req.params.id,
+        gig_date: req.params.date
+      },
+      attributes: ['gig_description','gig_location','gig_number_of_hours','gig_number_of_people','gig_rate','gig_total_pay']
     }).then(function(dbadd_gigs) {
       res.json(dbadd_gigs); 
     })
