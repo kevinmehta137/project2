@@ -77,11 +77,9 @@ class ManageJob extends React.Component {
                 <CloseIcon />
               </IconButton>
               <Typography variant="title" color="inherit" className={classes.flex}>
-                Edit or Close A Listing
+                Manage Your Listings
               </Typography>
-              <Button color="inherit" onClick={this.handleClose}>
-                save
-              </Button>
+              
             </Toolbar>
           </AppBar>
           <List>
@@ -101,7 +99,7 @@ class ManageJob extends React.Component {
                 />
               <DeleteConfirm />
               <Button>Edit</Button>
-              <Button>Close</Button>
+              
             </ListItem>
             )
           })}
