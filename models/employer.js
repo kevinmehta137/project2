@@ -28,8 +28,7 @@
 
   employer.associate = function(db) {
     employer.hasMany(db.add_gigs, {
-      foreignKey: 'id' ,
-      as: 'gig_id'
+      foreignKey: 'employer_id' 
     })
   
   }
