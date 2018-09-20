@@ -115,14 +115,13 @@ module.exports = function(app) {
   });
 
   // PUT route for updating posts
-  app.put("/api/jobposts", function(req, res) {
+  app.put("/api/jobposts/", function(req, res) {
     db.add_gigs.update(
-    
       req.body,
       {
-        where: {
-            id:req.body.id
-       }
+      where: {
+        id:req.body.id
+      }
       }).then(function(dbadd_gigs) {
       res.json(dbadd_gigs);
     });
