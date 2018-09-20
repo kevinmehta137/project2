@@ -41,11 +41,33 @@ class PostJob extends React.Component {
     this.setState({ [name]: event.target.value });
     };
 
+   /*  handleSubmit = event => {
+      event.preventDefault();
+  
+      const gig = {
+        gig_date: this.state.date,
+        gig_description: this.state.workType,
+        gig_location: this.state.location,
+        gig_number_of_hours: req.body.gig_number_of_hours,
+        gig_number_of_people: req.body.gig_number_of_people,
+        gig_rate: req.body.gig_rate,
+        gig_total_pay: req.body.gig_total_pay,
+        employerEmployerId: req.body.employer_id
+      };
+  
+      axios.post(`/api/jobposts`, { user })
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+        })
+    } */
+
     render () {
     const { classes } = this.props;
     return (
         <div>
         <Button onClick={this.handleClickOpen}> Post A Job </Button>
+        <form onSubmit={this.handleSubmit}>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -155,11 +177,12 @@ class PostJob extends React.Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose} type="submit" color="primary">
               Sumbit
             </Button>
           </DialogActions>
         </Dialog>
+        </form>
         </div>
     );
     }
