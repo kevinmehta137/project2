@@ -103,7 +103,6 @@ class Calendar extends React.Component {
                   ? "disabled"
                   : dateFns.isSameDay(day, selectedDate) ? "selected" : ""
               }`}
-              datatype = {dateFns.format(day, 'YYYY-MM-DD')}
               key={day}
               onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
             >
