@@ -15,7 +15,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import DeleteConfirm from '../DeleteConfirm/DeleteConfirm'
 import axios from 'axios';
-
+import PostJob from '../PostJob/PostJob'
 
 const styles = {
   appBar: {
@@ -34,11 +34,16 @@ class ManageJob extends React.Component {
   state = {
     open: false,
     jobs: []
+    
   };
+
+
 
     constructor (props) {
       super(props);
-      this.getJobs= this.getJobs.bind(this)   
+      
+      // this.onPost= this.onPost.bind(this)   
+
     }
   
   handleClickOpen = () => {
@@ -50,22 +55,22 @@ class ManageJob extends React.Component {
   };
 
 //axios call to get data from the database and populate the manage jobs list
-  componentDidMount() {
-    this.getJobs();
-  };
+  // componentDidMount() {
+  //   this.getJobs();
+  // };
  
-  getJobs () {
-    axios.get('/api/manageposts/1/')
-    .then ( (response) =>{
-      console.log(response.data) 
-        var jobData = response.data;
-        this.setState({jobs: jobData})
-      })
+  // getJobs () {
+  //   axios.get('/api/manageposts/1/')
+  //   .then ( (response) =>{
+  //     console.log(response.data) 
+  //       var jobData = response.data;
+  //       this.setState({jobs: jobData})
+  //     })
     
-    .catch(function(error){
-      console.log(error);
-    })
-  }
+  //   .catch(function(error){
+  //     console.log(error);
+  //   })
+  // }
 
 
   render() {
@@ -94,7 +99,7 @@ class ManageJob extends React.Component {
 
             {/* this is where the data is being rendered */}
 
-          {this.state.jobs.map( job => {
+          {this.props.getJobs.map( job => {
             return (
               <ListItem button>
               <ListItemText 
@@ -105,7 +110,7 @@ class ManageJob extends React.Component {
                {job.id}
                
                 />
-              <DeleteConfirm {...job} onDelete={this.getJobs} />
+              <DeleteConfirm {...job} onDelete={this.props.getJobs} />
               <Button>Edit</Button>
               
             </ListItem>
