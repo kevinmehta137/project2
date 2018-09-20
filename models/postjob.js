@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
           autoIncrement: true
         },
         gig_date: {
-           type: DataTypes.DATE,
+           type: DataTypes.DATEONLY,
            defaultValue: DataTypes.NOW,
            allownull: false
         },

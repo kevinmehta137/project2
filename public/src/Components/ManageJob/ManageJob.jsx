@@ -47,12 +47,13 @@ class ManageJob extends React.Component {
 
 //axios call to get data from the database and populate the manage jobs list
   componentDidMount() {
-    axios.get('api/manageposts/:employer_id/' )
-    .then(data => data.json())
-    .then(jsonData => {
-      this.setState({jobs: jsonData})
-      console.log(this.setState({jobs: jsonData}));
-    })
+    axios.get('/api/manageposts/1/')
+    .then ( (response) =>{
+      console.log(response.data) 
+        var jobData = response.data;
+        this.setState({jobs: jobData})
+      })
+    
     .catch(function(error){
       console.log(error);
     })
@@ -87,16 +88,24 @@ class ManageJob extends React.Component {
 
             {/* this is where the data is being rendered */}
 
-            <ListItem button>
+          {this.state.jobs.map( job => {
+            return (
+              <ListItem button>
               <ListItemText 
                primary= 
-               {this.state.jobs.gig_description}
-               secondary= 
-               {this.state.jobs.gig_date} />
+               {job.gig_description}
+               
+              secondary= 
+               {job.id}
+               
+                />
               <DeleteConfirm />
               <Button>Edit</Button>
               <Button>Close</Button>
             </ListItem>
+            )
+          })}
+            
             <Divider />
           
           </List>
