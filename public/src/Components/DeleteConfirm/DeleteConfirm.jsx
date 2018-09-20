@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -6,6 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { createMuiTheme } from '@material-ui/core/styles';
+import axios from 'axios';
 
 const theme = createMuiTheme({
 palette: {
@@ -17,19 +19,40 @@ palette: {
 
 
 class DeleteConfirm extends React.Component {
-  state = {
-    open: false,
-  };
-
+  constructor(props) {
+    super(props)
+    this.state = { 
+      open: false
+    }
+  }
   handleClickOpen = () => {
     this.setState({ open: true });
   };
 
   handleClose = () => {
     this.setState({ open: false });
+    
   };
 
+
+  handleRemove = jobs => { 
+    const url = '/api/jobposts/' + this.props.id;
+    console.log("PROPS", this.props.id)
+    axios.delete(url)
+    .then(res => {
+      
+      console.log(res)
+      
+      this.props.onDelete();
+    })
+    .catch(error => {
+      console.log(error);
+    })
+    this.handleClose();
+    ;
+  }
   render() {
+    console.log('CLASS COMPNENT', this.props);
     return (
       <div>
         <Button onClick={this.handleClickOpen}>Delete</Button>
@@ -49,7 +72,7 @@ class DeleteConfirm extends React.Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleClose} color="secondary" autoFocus>
+            <Button onClick={this.handleRemove} color="secondary" autoFocus>
               DELETE
             </Button>
           </DialogActions>
@@ -58,5 +81,13 @@ class DeleteConfirm extends React.Component {
     );
   }
 }
+
+DeleteConfirm.propTypes = {
+  jobID: PropTypes.string.isRequired
+};
+
+// DeleteConfirm.defaultProps = {
+//   jobID: '1'
+// }
 
 export default DeleteConfirm;
