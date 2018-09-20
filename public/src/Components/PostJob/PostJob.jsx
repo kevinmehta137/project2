@@ -41,26 +41,26 @@ class PostJob extends React.Component {
     this.setState({ [name]: event.target.value });
     };
 
-   /*  handleSubmit = event => {
-      event.preventDefault();
+    //  handleSubmit = event => {
+    //   event.preventDefault();
   
-      const gig = {
-        gig_date: this.state.date,
-        gig_description: this.state.workType,
-        gig_location: this.state.location,
-        gig_number_of_hours: req.body.gig_number_of_hours,
-        gig_number_of_people: req.body.gig_number_of_people,
-        gig_rate: req.body.gig_rate,
-        gig_total_pay: req.body.gig_total_pay,
-        employerEmployerId: req.body.employer_id
-      };
+    //   const gig = {
+    //     gig_date: this.state.date,
+    //     gig_description: this.state.workType,
+    //     gig_location: this.state.location,
+    //     gig_number_of_hours: req.body.gig_number_of_hours,
+    //     gig_number_of_people: req.body.gig_number_of_people,
+    //     gig_rate: req.body.gig_rate,
+    //     gig_total_pay: req.body.gig_total_pay,
+    //     employerEmployerId: req.body.employer_id
+    //   };
   
-      axios.post(`/api/jobposts`, { user })
-        .then(res => {
-          console.log(res);
-          console.log(res.data);
-        })
-    } */
+    //   axios.post(`/api/jobposts`, { user })
+    //     .then(res => {
+    //       console.log(res);
+    //       console.log(res.data);
+    //     })
+    // } 
 
     render () {
     const { classes } = this.props;
@@ -129,21 +129,7 @@ class PostJob extends React.Component {
             InputLabelProps={{shrink: true,}}
             />
             </Grid>
-            <Grid item xs={12} sm={6}>
-            <TextField
-            id="time"
-            label="Time"
-            type="time"
-            defaultValue="07:30"
-            className={classes.textField}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            inputProps={{
-              step: 300, // 5 min
-            }}
-            />
-            </Grid>
+            
             <Grid item xs={12} sm={6}>
             <InputLabel htmlFor="rate-native-simple">Rate of Pay  </InputLabel>
             <Select
