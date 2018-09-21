@@ -1,4 +1,4 @@
---Employer 1
+USE gig_finderdb;
 INSERT INTO employers
 (
     employer_name, 
@@ -13,7 +13,6 @@ INSERT INTO employers
     '123bacon'
 );
 
---Employer 2
 INSERT INTO employers
 (
     employer_name, 
@@ -28,7 +27,6 @@ INSERT INTO employers
     'bluebird'
 );
 
---Employer 1 Job 1
 INSERT INTO add_gigs
 (
     gig_date,
@@ -53,7 +51,6 @@ INSERT INTO add_gigs
     1
 );
 
---Employer 1 Job 2
 INSERT INTO add_gigs
 (
     gig_date,
@@ -78,7 +75,6 @@ INSERT INTO add_gigs
     1
 );
 
---Employer 2 Job 1
 INSERT INTO add_gigs
 (
     gig_date,
@@ -103,7 +99,6 @@ INSERT INTO add_gigs
     2
 );
 
---Employer 2 Job 2
 INSERT INTO add_gigs
 (
     gig_date,
@@ -127,15 +122,3 @@ INSERT INTO add_gigs
     2,
     2
 );
-
---Employee Data
--- INSERT INTO employees
--- (
---     employee_name, 
---     employee_phone
--- ) VALUES 
--- (
---     'Bobby Hill', 
---     3233630116
--- );
-

@@ -37,7 +37,7 @@ class App extends Component {
       <div className="App">
         {/*<MainPage />*/}
         <Navbar dayHandler = {this.dayHandler}/>
-        <Calendar selectableDays = {this.state.selectableDays}/>
+        <Calendar dayHandler = {this.dayHandler} selectableDays = {this.state.selectableDays}/>
         
        
       </div>

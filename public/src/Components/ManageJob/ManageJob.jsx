@@ -14,8 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import DeleteConfirm from '../DeleteConfirm/DeleteConfirm'
-import axios from 'axios';
-import PostJob from '../PostJob/PostJob'
+import EditJob from '../EditJob/EditJob';
 
 const styles = {
   appBar: {
@@ -111,7 +110,7 @@ class ManageJob extends React.Component {
                
                 />
               <DeleteConfirm {...job} onDelete={this.props.getJobs} />
-              <Button>Edit</Button>
+              {/* <EditJob id={job.id}/> */}
               
             </ListItem>
             )

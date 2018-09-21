@@ -4,12 +4,12 @@ import { withStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import Grid from '@material-ui/core/Grid';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import axios from 'axios';
+import EditJob from '../EditJob/EditJob';
 
 const styles = {
     card: {
@@ -98,11 +98,12 @@ class CalendarCard extends React.Component  {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={this.handleClose}>Edit Posting</Button>
+        <EditJob dayHandler={this.props.dayHandler} id={this.state.dateInfo.id} date={this.props.date} close={this.handleClose}/>
         </DialogActions>
         <DialogActions>
           <Button onClick={this.handleClose}>Close</Button>
         </DialogActions>
+
       </Dialog>
       </div>
     );}

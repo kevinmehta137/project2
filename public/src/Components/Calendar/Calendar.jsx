@@ -76,7 +76,7 @@ class Calendar extends React.Component {
             >
               <span className="number">{formattedDate}</span>
               <span className="bg">{formattedDate}</span>
-              <CalendarCard date={dateFns.format(day, 'YYYY-MM-DD')}/>
+              <CalendarCard date={dateFns.format(day, 'YYYY-MM-DD')} dayHandler = {this.props.dayHandler}/>
             </div>
           )}
         }

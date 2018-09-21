@@ -68,7 +68,7 @@ module.exports = function(app) {
         employerEmployerId: req.params.id,
         gig_date: req.params.date
       },
-      attributes: ['gig_description','gig_location','gig_number_of_hours','gig_number_of_people','gig_rate','gig_total_pay']
+      attributes: ['id','gig_description','gig_location','gig_number_of_hours','gig_number_of_people','gig_rate','gig_total_pay']
     }).then(function(dbadd_gigs) {
       res.json(dbadd_gigs); 
     })
@@ -115,14 +115,11 @@ module.exports = function(app) {
   });
 
   // PUT route for updating posts
-  app.put("/api/jobposts", function(req, res) {
-    db.add_gigs.update(
-    
-      req.body,
-      {
-        where: {
-            id:req.body.id
-       }
+  app.put("/api/jobposts/:id", function(req, res) {
+    db.add_gigs.update( req.body,{
+      where: {
+        id: req.params.id,
+      }
       }).then(function(dbadd_gigs) {
       res.json(dbadd_gigs);
     });
