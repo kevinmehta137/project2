@@ -113,7 +113,7 @@ class Calendar extends React.Component {
       selectedDate: date
     }, () => {
       var day = dateFns.format(date, 'YYYY-MM-DD')
-      if (this.props.selectableDays == day) {
+      if (this.props.selectableDays === day) {
         this.setState({showCalendarCard: true})
         console.log("I am a clickable day")
       } else {

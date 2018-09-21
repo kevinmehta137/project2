@@ -14,10 +14,6 @@ module.exports = function(app) {
 
   // GET route for getting all of the posts
   app.get("/api/jobposts", function(req, res) {
-    // var query = {};
-    // if (req.query.id) {
-    //   query.id= req.query.id;
-    // }
     // Here we add an "include" property to our options in our findAll query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.Author
@@ -29,7 +25,6 @@ module.exports = function(app) {
   });
 
    //route for getting all the posts of a specific user
-
    app.get("/api/manageposts/:employer_id", (req, res) => {
     db.add_gigs.findAll({ 
       where: { employerEmployerId: req.params.employer_id } 

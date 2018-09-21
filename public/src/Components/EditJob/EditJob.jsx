@@ -55,7 +55,7 @@ class EditJob extends React.Component {
         employerEmployerId: 1,
         employer_id: 1
       };
-  
+
       axios.put(`/api/jobposts/${this.props.id}`, gig)
       .then((response)=> {
         console.log(response);
@@ -65,8 +65,7 @@ class EditJob extends React.Component {
         console.log(error);
       });
       this.handleClose();
-      this.props.close;
-      
+      window.location.reload();      
     }
 
     componentDidMount() {

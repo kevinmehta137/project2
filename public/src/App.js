@@ -3,7 +3,6 @@ import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import Calendar from './Components/Calendar/Calendar';
 import axios from 'axios';
-import MainPage from './Components/MainPage/MainPage'
 
 class App extends Component {
   state = {
