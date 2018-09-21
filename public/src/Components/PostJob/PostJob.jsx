@@ -60,9 +60,7 @@ class PostJob extends React.Component {
         console.log(response);
         this.props.dayHandler(response);
         //triggers a rerender of ManageJob
-        // this.props.onPost();
         this.props.jobHandler(response);
-
       })
       .catch(function (error) {
         console.log(error);
