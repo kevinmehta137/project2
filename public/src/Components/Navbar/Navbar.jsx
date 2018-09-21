@@ -117,7 +117,7 @@ class Navbar extends React.Component {
           <Divider />
           <div className={classes.drawerInner}>
             <List> <PostJob dayHandler = {this.props.dayHandler} jobHandler = {this.newJobHandler}/>  </List>
-            <List> <ManageJob getJobs = {this.state.jobs}/>  </List>
+            <List> <ManageJob getJobs = {this.state.jobs} dayHandler = {this.props.dayHandler}/>  </List>
             <Button color="inherit"> Logout </Button>
           </div>
         </Drawer>

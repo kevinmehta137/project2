@@ -23,9 +23,10 @@ const styles = theme => ({
   },
 });
 
-class PostJob extends React.Component {
+class EditJob extends React.Component {
     state = {
     open: false,
+    dateInfo: []
     };
 
     handleClickOpen = () => {
@@ -55,36 +56,46 @@ class PostJob extends React.Component {
         employer_id: 1
       };
   
-      axios.post(`/api/jobposts`, gig)
+      axios.put(`/api/jobposts/${this.props.id}`, gig)
       .then((response)=> {
         console.log(response);
         this.props.dayHandler(response);
-        //triggers a rerender of ManageJob
-        // this.props.onPost();
-        this.props.jobHandler(response);
-
       })
       .catch(function (error) {
         console.log(error);
       });
       this.handleClose();
+      this.props.close;
       
     }
+
+    componentDidMount() {
+        // here I make my axios.get call
+        axios.get(`/api/jobposts/id/1/date/${this.props.date}`)
+        .then( (response) =>{
+          console.log(response.data);
+          var info = response.data[0];
+          this.setState({dateInfo : info})
+        })
+        .catch(function(error){
+          console.log(error);
+        })
+    };
 
     render () {
     const { classes } = this.props;
     return (
         <div>
-        <Button onClick={this.handleClickOpen}> Post A Job </Button>
+        <Button onClick={this.handleClickOpen}> Edit Job </Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
-        <DialogTitle id="form-dialog-title"> Post A Job </DialogTitle>
+        <DialogTitle id="form-dialog-title"> Edit A Job </DialogTitle>
         <DialogContent>
             <DialogContentText>
-              Please provide information on the new job posting:
+              Go Ahead and Update:
             </DialogContentText>
             <Grid container spacing={24}>
             <Grid item xs={12} sm={6}>
@@ -93,6 +104,7 @@ class PostJob extends React.Component {
               margin="dense"
               label="Job Description"
               type="title"
+              defaultValue={this.state.dateInfo.gig_description}
               fullWidth
               value = {this.state.title}
               onChange = {this.handleChange('title')}
@@ -105,6 +117,7 @@ class PostJob extends React.Component {
               label="Job Location"
               type="title"
               fullWidth
+              defaultValue={this.state.dateInfo.gig_location}
               value = {this.state.location}
               onChange = {this.handleChange('location')}
             />
@@ -116,6 +129,7 @@ class PostJob extends React.Component {
               label="# of People"
               type="title"
               fullWidth
+              defaultValue={this.state.dateInfo.gig_number_of_people}
               value = {this.state.numberPeople}
               onChange = {this.handleChange('numberPeople')}
             />
@@ -126,6 +140,7 @@ class PostJob extends React.Component {
               margin="dense"
               label="Total Pay"
               type="title"
+              defaultValue={this.state.dateInfo.gig_total_pay}
               fullWidth
               value = {this.state.totalPay}
               onChange = {this.handleChange('totalPay')}
@@ -135,7 +150,7 @@ class PostJob extends React.Component {
             <TextField
             label="Date"
             type="date"
-            defaultValue="2018-09-24"
+            defaultValue={this.state.dateInfo.gig_date}
             className={classes.textField}
             InputLabelProps={{shrink: true,}}
             value = {this.state.date}
@@ -147,6 +162,7 @@ class PostJob extends React.Component {
             label="Pay Rate"
             type="title"
             className={classes.textField}
+            defaultValue={this.state.dateInfo.gig_rate}
             value = {this.state.payRate}
             onChange = {this.handleChange('payRate')}
             />
@@ -156,6 +172,7 @@ class PostJob extends React.Component {
             label="# of Hours"
             type="title"
             className={classes.textField}
+            defaultValue={this.state.dateInfo.gig_number_of_hours}
             value = {this.state.hours}
             onChange = {this.handleChange('hours')}
             />
@@ -176,8 +193,8 @@ class PostJob extends React.Component {
     }
 }
 
-PostJob.propTypes = {
+EditJob.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(PostJob);
+export default withStyles(styles)(EditJob);
