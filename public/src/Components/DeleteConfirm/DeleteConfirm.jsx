@@ -40,6 +40,7 @@ class DeleteConfirm extends React.Component {
       console.log(error);
     })
     this.handleClose();
+    window.location.reload();  
     ;
   }
   render() {
